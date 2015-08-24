@@ -40,6 +40,16 @@ class LinkedList:
             prev.setPtr(None)
 
         return current.getData()
+    
+    def remove_first(self):
+        """Remove the node at the start of the list and return its data, False otherwise."""
+        if self.head is None:
+            return False
+        else:
+            value = self.head.getData()
+            self.head = self.head.getPtr()
+            return value
+            
 
     def isEmpty(self):
         """Return True if the list is empty, False otherwise."""
@@ -55,3 +65,19 @@ class LinkedList:
             count += 1
 
         return count
+        
+    def search(self,search_data):
+        """Returns the position of the node that contains the data, False otherwise"""
+        if self.isEmpty is True:
+            return False
+        else:
+            current = self.head
+            count = 0
+            
+            while current.getData() is not search_data:
+                if current.getPtr() is None:
+                    return False
+                else:
+                    current = current.getPtr()
+                    
+            return current.getData()
